@@ -2,6 +2,7 @@
 
 import gurobipy as gp
 
+
 def transportation_problem(I, J, s, d, c):
     """
     Solve the transportation problem using Gurobi.
@@ -30,6 +31,11 @@ def transportation_problem(I, J, s, d, c):
     # Add demand constraints
     for j in range(J):
         model.addConstr(gp.quicksum(x[i, j] for i in range(I)) >= d[j])
+
+    # Add non-negativity constraint
+    for i in range(I):
+        for j in range(J):
+            model.addConstr(x[i, j] >= 0)
     
     # Optimize the model
     model.optimize()
@@ -38,6 +44,8 @@ def transportation_problem(I, J, s, d, c):
     flows = [[x[i, j].x for j in range(J)] for i in range(I)]
 
     return model.objVal, flows
+
+
   
   """
   
