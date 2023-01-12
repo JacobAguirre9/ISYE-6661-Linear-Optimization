@@ -45,6 +45,21 @@ def network_flow(nodes, arcs, capacities, source, sink, flows=None):
   # You can then pass the nodes, arcs, capacities, source and sink of a network as well as any initial flows for the arcs to this 
   # function to get the solution for the network flow problem.
 
+  # Tractable example below
 
+  """
+  # Define the nodes, arcs, capacities, source, and sink of a simple network
+  nodes = [1, 2, 3, 4]  
+  arcs = [(1, 2), (1, 3), (2, 3), (3, 4)]
+  capacities = {(1, 2): 2, (1, 3): 4, (2, 3): 1, (3, 4): 2}
+  source = 1
+  sink = 4
 
+  # Compute the maximum flow
+  obj_val, flows = network_flow(nodes, arcs, capacities, source, sink)
 
+  # Print the results
+  print("Optimal objective value:", obj_val)
+  print("Flows on each arc:", flows)
+
+  """
